@@ -5,7 +5,7 @@ const Navigation = () => {
     return (
         <nav className="fixed-top mt-2 ms-4">
             <ul className="nav">
-                {navItems.map(item => <NavItem itemTitle={item} />)}
+                {navItems.map(item => <NavItem itemTitle={item} key={item} />)}
             </ul>
         </nav>
     );
