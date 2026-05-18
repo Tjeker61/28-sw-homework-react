@@ -22,7 +22,7 @@ const AboutMe = () => {
     if (heroInfo) {
     return (
         <div className={"clearfix"}>
-            <img className="w-25 float-start me-2 mb-2" src={main} alt="Luke Skywalker"/>
+            <img className="w-25 float-start me-3 mb-3 img-shadow" src={main} alt="Luke Skywalker"/>
         <p className="far-galaxy fs-2 lh-2">
             Name: {heroInfo.name}<br/>
             Gender: {heroInfo.gender}<br/>
