@@ -3,20 +3,35 @@ import {BASE_URL} from "../utils/constants.js";
 import main from "../images/main.jpg";
 
 const AboutMe = () => {
-    const [heroInfo, setHeroInfo] = useState()
+    const [heroInfo, setHeroInfo] = useState(() => {
+        const hero = JSON.parse(localStorage.getItem("hero"));
+        if (hero && Date.now() - hero.timestamp < 1000 * 60 * 60 * 24 * 30) {
+            return hero.payload;
+        }
+    })
 
     useEffect(() => {
-        fetch(`${BASE_URL}/v1/peoples/1`)
-            .then(res => res.json())
-            .then(data => setHeroInfo({
-                name: data.name,
-                gender: data.gender,
-                height: data.height,
-                eyeColor: data.eye_color,
-                birthYear: data.birth_year
-                }
-            ))
-            .catch(() => setHeroInfo('Data loading error'))
+        if (!heroInfo) {
+            fetch(`${BASE_URL}/v1/peoples/1`)
+                .then(res => res.json())
+                .then(data => {
+                    const info = {
+                        name: data.name,
+                        gender: data.gender,
+                        height: data.height,
+                        eyeColor: data.eye_color,
+                        birthYear: data.birth_year
+                    }
+                    setHeroInfo(info)
+                    localStorage.setItem('hero', JSON.stringify(
+                        {
+                            payload: info,
+                            timestamp: Date.now(),
+                        }
+                    ))
+                })
+                .catch(() => setHeroInfo('Data loading error'))
+        }
     }, []);
 
     if (heroInfo) {
