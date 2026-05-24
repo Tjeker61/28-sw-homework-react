@@ -1,7 +1,7 @@
 const Friend = ({src, alt}) => {
     const classNameValue = alt === 'friend7' || alt === 'friend9'
-        ? "col-sm-4 p-1 rounded-bottom-5"
-        : "col-sm-4 p-1";
+        ? "w-full rounded-b-3xl"
+        : "w-full";
 
     return (
         <img className={classNameValue} src={src} alt={alt}/>
