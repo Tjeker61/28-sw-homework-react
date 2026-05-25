@@ -16,11 +16,11 @@ const AboutMe = () => {
                 .then(res => res.json())
                 .then(data => {
                     const info = {
-                        name: data.name,
-                        gender: data.gender,
-                        height: data.height,
-                        eyeColor: data.eye_color,
-                        birthYear: data.birth_year
+                        'Name': data.name,
+                        'Gender': data.gender,
+                        'Height': data.height,
+                        'Eye Color': data.eye_color,
+                        'Birth Year': data.birth_year
                     }
                     setHeroInfo(info)
                     localStorage.setItem('hero', JSON.stringify(
@@ -30,27 +30,23 @@ const AboutMe = () => {
                         }
                     ))
                 })
-                .catch(() => setHeroInfo('Data loading error'))
+                .catch(() => setHeroInfo({Error: 'Data loading error'}))
         }
     }, []);
 
     if (heroInfo) {
     return (
-        <div className={"clearfix"}>
-            <img className="w-25 float-start me-3 mb-3 img-shadow" src={main} alt="Luke Skywalker"/>
-        <p className="far-galaxy fs-2 lh-2">
-            Name: {heroInfo.name}<br/>
-            Gender: {heroInfo.gender}<br/>
-            Height: {heroInfo.height}<br/>
-            Eye color: {heroInfo.eyeColor}<br/>
-            Birth Year: {heroInfo.birthYear}
+        <div>
+            <img className="w-1/5 shadow-hero float-start m-4" src={main} alt="Luke Skywalker"/>
+        <p className="text-justify tracking-widest text-3xl leading-normal">
+            {Object.entries(heroInfo).map(([key, value]) => <span key={key}>{key}: {value}<br/></span>)}
         </p>
         </div>
     );
     } else {
         return (
-            <p className="far-galaxy fs-2 lh-2">
-                <span className={'spinner-border'}/> Loading...
+            <p className="text-justify tracking-widest text-3xl leading-normal">
+                Loading...
             </p>
         )
     }
