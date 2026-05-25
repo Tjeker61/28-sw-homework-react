@@ -28,39 +28,39 @@ const Contact = () => {
 
     if (planetsList) {
         return (
-            <div>
-                <form className={'far-galaxy fs-2 lh-2'}>
+            <div className={'p-5 border-5 bg-white'}>
+                <form className={''}>
                     <div>
-                        <label htmlFor="fname">First Name</label>
-                        <input type="text" id="fname" name="firstname" placeholder="Your name.."/>
+                        <label className={'w-full text-danger'} htmlFor="fname">First Name</label>
+                        <input className={'w-full p-3 border border-gray-700 rounded-sm box-border mt-1.5 mb-4'} type="text" id="fname" name="firstname" placeholder="Your name.."/>
                     </div>
 
                     <div>
-                        <label htmlFor="lname">Last Name</label>
-                        <input type="text" id="lname" name="lastname" placeholder="Your last name.."/>
+                        <label className={'w-full text-danger'} htmlFor="lname">Last Name</label>
+                        <input className={'w-full p-3 border border-gray-700 rounded-sm box-border mt-1.5 mb-4'} type="text" id="lname" name="lastname" placeholder="Your last name.."/>
                     </div>
 
                     <div>
-                        <label htmlFor="planet">Planet</label>
-                        <select id="planet" name="planet">
+                        <label className={'w-full text-danger'} htmlFor="planet">Planet</label>
+                        <select className={'w-full p-3 border border-gray-700 rounded-sm box-border mt-1.5 mb-4'} id="planet" name="planet">
                             {planetsList.map(planet => <option value={planet}>{planet}</option>)}
                         </select>
                     </div>
 
                     <div>
-                        <label htmlFor="subject">Subject</label>
-                        <textarea id="subject" name="subject" placeholder="Write something.."></textarea>
+                        <label className={'w-full text-danger'} htmlFor="subject">Subject</label>
+                        <textarea className={'w-full h-50 p-3 border border-gray-700 rounded-sm box-border mt-1.5 mb-4 resize-y'} id="subject" name="subject" placeholder="Write something.."></textarea>
                     </div>
 
-                    <input type="submit" value="Submit" disabled/>
+                    <input className={'bg-submit text-white px-3 py-5 border-none rounded-sm cursor-pointer hover:bg-submit-hover'} type="submit" value="Submit" disabled/>
 
                 </form>
             </div>
         );
     } else {
         return (
-            <p className="far-galaxy fs-2 lh-2">
-                <span className={'spinner-border'}/> Loading...
+            <p className="text-justify tracking-widest text-3xl leading-normal">
+                Loading...
             </p>
         )
     }
